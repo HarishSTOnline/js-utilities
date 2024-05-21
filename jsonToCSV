@@ -1,0 +1,35 @@
+const jsonArray = [
+    {
+        name: 'John Doe',
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'johndoe@yahoo.com',
+    },
+    {
+        name: 'Jean Doe',
+        firstName: 'Jean',
+        lastName: 'Doe',
+        email: 'jeandoe@yahoo.com',
+    },
+];
+
+function jsonToCsv(items) {
+    const header = Object.keys(items[0]);
+    const headerString = header.join(',');
+    const replacer = (key, value) => value ?? '';
+    const rowItems = items.map((row) =>
+        header
+            .map((fieldName) => JSON.stringify(row[fieldName], replacer))
+            .join(',')
+    );
+    const csv = [headerString, ...rowItems].join('\r\n');
+    return csv;
+}
+
+console.log(jsonToCsv(jsonArray));
+
+// Response
+
+name, firstName, lastName, email
+"John Doe", "John", "Doe", "johndoe@yahoo.com"
+"Jean Doe", "Jean", "Doe", "jeandoe@yahoo.com"
