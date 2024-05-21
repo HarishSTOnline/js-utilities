@@ -1,0 +1,21 @@
+const payload = [
+    {
+        "name": "PORT",
+        "value": "4104"
+    },
+    {
+        "name": "ENVIRONMENT",
+        "value": "development"
+    }
+];
+
+let response = '';
+payload.forEach((obj) => {
+    response += `${obj.name}="${obj.value}"\n`;
+});
+console.log(response);
+
+
+// Repsonse
+PORT="4104"
+ENVIRONMENT="development"
