@@ -13,7 +13,17 @@ let response = '';
 payload.forEach((obj) => {
     response += `${obj.name}="${obj.value}"\n`;
 });
-console.log(response);
+
+const fs = require("node:fs");
+fs.writeFile("key-value.txt", response, (err) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log("file written successfully");
+    }
+});
+
+// console.log(response);
 
 
 // Repsonse
