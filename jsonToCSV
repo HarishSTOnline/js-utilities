@@ -26,7 +26,17 @@ function jsonToCsv(items) {
     return csv;
 }
 
-console.log(jsonToCsv(jsonArray));
+const fs = require("node:fs");
+const response = jsonToCsv(jsonArray);
+fs.writeFile(".env.dev", response, (err) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log("file written successfully");
+    }
+});
+
+// console.log(jsonToCsv(jsonArray));
 
 // Response
 
